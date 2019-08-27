@@ -8,5 +8,8 @@
 user = User.new(name: 'Pedro', email: 'pedro-test@test.com', password: '121343')
 user.save!
 
+# Tambien se puede crear llamando al method .create
+User.create(name: 'Juan', email: 'juan-test@test.com', password: 'efefef12')
+
 post = Post.new(title: 'Nuevo Post', content: 'Some content', date: DateTime.now, user: user)
 post.save!

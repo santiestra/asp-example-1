@@ -1,0 +1,17 @@
+<%= form_with(model: user) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, autofocus: true %>
+  <br/>
+  <br/>
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+  <br/>
+  <br/>
+  <% if show_password %>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  <% end %>
+  <br/>
+  <br/>
+  <%= form.submit 'Submit', class: 'submit' %>
+<% end %>
