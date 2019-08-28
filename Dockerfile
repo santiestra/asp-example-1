@@ -1,4 +1,4 @@
-FROM ruby:2.6.2
+FROM ruby:2.5.5
 
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -20,7 +20,7 @@ RUN npm -v
 # will be cached unless changes to one of those two files
 # are made.
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
-RUN gem install bundler -v 1.17.2
+RUN gem install bundler -v 2.0.2
 RUN gem install foreman -v 0.85.0
 RUN bundle install --verbose --jobs 20 --retry 5
 
