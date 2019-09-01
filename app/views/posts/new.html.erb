@@ -1,0 +1,10 @@
+<% @post.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+
+<div>
+  <% content_for :title do %>Post<% end %>
+  <div class="form">
+    <%= render 'form', post: @post %>
+  </div>
+</div>
