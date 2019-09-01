@@ -11,5 +11,9 @@ user.save!
 # Tambien se puede crear llamando al method .create
 User.create(name: 'Juan', email: 'juan-test@test.com', password: 'efefef12')
 
-post = Post.new(title: 'Nuevo Post', content: 'Some content', date: DateTime.now, user: user)
+category = Category.create(code: 'rails', description: 'Posts sobre Rails')
+
+post = Post.new(title: 'Nuevo Post', content: 'Some content', date: DateTime.now, user: user, category: category)
 post.save!
+
+comment = Comment.create(text: 'Lorem ipsum', date: DateTime.now, post: post, user: user)
