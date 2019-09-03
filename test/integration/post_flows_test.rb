@@ -23,7 +23,7 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
     new_post_name = 'Test Post'
 
     post "/posts", params: {
-      post: { title: new_post_name, body: 'test content.', date: DateTime.current, category_id: Category.first.id }
+      post: { title: new_post_name, content: 'test content.', date: DateTime.current, category_id: Category.first.id }
     }
 
     assert_response :redirect
