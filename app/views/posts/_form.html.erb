@@ -1,18 +1,27 @@
-<%= form_with(model: post) do |form| %>
+<% if @post.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    Hubo errores al crear el post
+  </div>
+<% end %>
+
+<%= form_with(model: post, local: true) do |form| %>
   <%= form.label :title %>
   <br/>
   <%= form.text_field :title, autofocus: true %>
+  <%= post.errors[:title].join(', ') %>
   <br/>
   <br/>
   <%= form.label :content %>
   <br/>
   <%= form.text_area :content %>
+  <%= post.errors[:content].join(', ') %>
   <br/>
   <br/>
   <%= form.label :category %>
   <br/>
   <%= form.select(:category_id, @categories.map { |category| [category.description, category.id]}) %>
   <br/>
+  <%= post.errors[:category_id].join(', ') %>
   <br/>
   <%= form.submit 'Submit', class: 'submit' %>
 <% end %>
