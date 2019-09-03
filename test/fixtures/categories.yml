@@ -7,3 +7,7 @@ one:
 two:
   code: MyString
   description: MyString
+
+three:
+  code: AnotherCategory
+  description: AnotherCategory

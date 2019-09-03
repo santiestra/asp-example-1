@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class PostFlowsTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
-
   test 'can see the post pages' do
     get '/posts'
 
@@ -28,6 +24,7 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     follow_redirect!
+
     assert_response :success
     assert_select 'h2', new_post_name
   end

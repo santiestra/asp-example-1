@@ -19,7 +19,7 @@
   <br/>
   <%= form.label :category %>
   <br/>
-  <%= form.select(:category_id, @categories.map { |category| [category.description, category.id]}) %>
+  <%= form.select(:category_id, @categories.map { |category| [category.description, category.id] }) %>
   <br/>
   <%= post.errors[:category_id].join(', ') %>
   <br/>

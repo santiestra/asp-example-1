@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     user = User.first
     @post = Post.new(post_params)
     @post.user = user
-    @post.date = DateTime.now
+    @post.date = DateTime.current
 
     if @post.save
       redirect_to posts_path

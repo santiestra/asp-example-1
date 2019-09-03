@@ -16,7 +16,8 @@ class PostsTest < ApplicationSystemTestCase
     assert_text 'Content'
     assert_text 'Category'
 
-    fill_in "Title", with: 'Creating an Article'
+    new_post_name = 'Creating an Article'
+    fill_in "Title", with: new_post_name
     fill_in "Content", with: 'Created this article successfully!'
 
     click_on 'Submit'
@@ -24,6 +25,6 @@ class PostsTest < ApplicationSystemTestCase
     assert_current_path posts_path
 
     assert_selector 'h1', text: 'Posts'
-    assert_selector 'h2', text: 'Creating an Article'
+    assert_selector 'h2', text: new_post_name
   end
 end
