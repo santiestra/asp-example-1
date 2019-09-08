@@ -25,5 +25,15 @@ class PostTest < ActiveSupport::TestCase
     assert_not_nil post.errors[:title]
   end
 
-  # Add tests for all the other validations...
+  test 'post without title and category' do
+    post = Post.new(
+      content: 'test content for the post',
+      date: DateTime.current,
+      user: User.first
+    )
+
+    assert_not post.valid?
+    assert_not_nil post.errors[:category]
+    assert_not_nil post.errors[:title]
+  end
 end

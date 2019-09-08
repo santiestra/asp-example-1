@@ -27,4 +27,24 @@ class PostsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Posts'
     assert_selector 'h2', text: new_post_name
   end
+
+  test 'creating a new post without title' do
+    visit posts_path
+
+    click_on 'Nuevo Post'
+
+    assert_text 'Title'
+    assert_text 'Content'
+    assert_text 'Category'
+
+    new_post_name = 'Creating an Article'
+    fill_in "Content", with: 'Created this article successfully!'
+
+    click_on 'Submit'
+
+    # assert_current_path new_post_path
+
+    assert_text "can't be blank"
+    assert_text 'Hubo errores al crear el post'
+  end
 end
