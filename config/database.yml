@@ -26,6 +26,10 @@ test:
   <<: *default
   database: <%= ENV.fetch('DB_NAME', 'aspost-test') %>
 
+staging:
+  <<: *default
+  database: <%= ENV.fetch('DB_NAME', 'aspost-staging') %>
+
 production:
   <<: *default
   database: <%= ENV.fetch('DB_NAME') %>
