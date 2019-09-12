@@ -11,6 +11,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg', '1.1.4'
 # gem 'mysql2', '0.5.2'
 
+# Gems for caching
 gem 'redis', '~> 4.0'
 gem 'hiredis', '0.6.3'
 
