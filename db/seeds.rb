@@ -5,11 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.new(name: 'Pedro', email: 'pedro-test@test.com', password: '121343')
+
+company = Company.create(name: 'Test Company')
+
+user = User.new(name: 'Pedro', email: 'pedro-test@test.com', password: '121343', company: company)
 user.save!
 
 # Tambien se puede crear llamando al method .create
-User.create(name: 'Juan', email: 'juan-test@test.com', password: 'efefef12')
+User.create(name: 'Juan', email: 'juan-test@test.com', password: 'efefef12', company: company)
 
 category = Category.create(code: 'rails', description: 'Posts sobre Rails')
 
