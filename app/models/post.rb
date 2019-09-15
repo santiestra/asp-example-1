@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { minimum: 5 }
 
   scope :for_company, -> (company_id) do
-    joins(:user).where(company_id: company_id)
+    joins(:user).where('users.company_id = ?', company_id)
   end
 end
