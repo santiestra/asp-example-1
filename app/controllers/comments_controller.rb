@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
 
     @comment.save!
 
+    CommentNotificationMailer.with(comment: @comment).send_notification.deliver_later
+
     redirect_to post_path(@comment.post)
   end
 

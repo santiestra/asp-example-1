@@ -58,8 +58,8 @@ Rails.application.configure do
   config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_URL') }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "aspost_production"
+  config.active_job.queue_adapter = :sucker_punch
 
   config.action_mailer.perform_caching = false
 

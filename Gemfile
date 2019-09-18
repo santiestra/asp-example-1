@@ -39,6 +39,12 @@ gem 'jquery-rails', '~> 4.3.5'
 # For multi-tenancy
 gem 'acts_as_tenant', '~> 0.4.2'
 
+# For background tasks
+gem 'sucker_punch', '~> 2.1.2'
+
+# For development of emails
+gem 'letter_opener', :group => :development
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

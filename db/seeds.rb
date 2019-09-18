@@ -8,7 +8,7 @@
 company = Company.create(name: 'Test Company')
 company2 = Company.create(name: 'The Other Company')
 
-user = User.new(name: 'Pedro', email: 'pedro-test@test.com', password: '121343', company: company)
+user = User.new(name: 'Pedro', email: 'santiagoestrago@gmail.com', password: '121343', company: company)
 user.save!
 
 user2 = User.new(name: 'Juan', email: 'juan-test@test.com', password: 'efefef12', company: company2)
