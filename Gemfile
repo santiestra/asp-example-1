@@ -36,6 +36,9 @@ gem 'jquery-rails', '~> 4.3.5'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# For auth
+gem 'devise', '~> 4.7.1'
+
 # For multi-tenancy
 gem 'acts_as_tenant', '~> 0.4.2'
 

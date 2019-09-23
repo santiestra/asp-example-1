@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    # Por ahora como no tenemos login, hacemos que el user
-    # que crea los posts sea el primero
-    user = User.first
     @comment = Comment.new(comment_params)
-    @comment.user = user
+    @comment.user = current_user
     @comment.date = DateTime.now
 
     @comment.save!

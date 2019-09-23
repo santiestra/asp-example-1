@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @posts = Post.all
   end
@@ -13,11 +15,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # Por ahora como no tenemos login, hacemos que el user
-    # que crea los posts sea el primero
-    user = User.first
     @post = Post.new(post_params)
-    @post.user = user
+    @post.user = current_user
     @post.date = DateTime.current
 
     if @post.save
