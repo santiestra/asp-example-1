@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentNotificationMailer < ApplicationMailer
   attr_reader :comment, :post, :user
 

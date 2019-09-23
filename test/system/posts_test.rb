@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
 class PostsTest < ApplicationSystemTestCase
@@ -17,8 +19,8 @@ class PostsTest < ApplicationSystemTestCase
     assert_text 'Category'
 
     new_post_name = 'Creating an Article'
-    fill_in "Title", with: new_post_name
-    fill_in "Content", with: 'Created this article successfully!'
+    fill_in 'Title', with: new_post_name
+    fill_in 'Content', with: 'Created this article successfully!'
 
     click_on 'Submit'
 
@@ -38,7 +40,7 @@ class PostsTest < ApplicationSystemTestCase
     assert_text 'Category'
 
     new_post_name = 'Creating an Article'
-    fill_in "Content", with: 'Created this article successfully!'
+    fill_in 'Content', with: 'Created this article successfully!'
 
     click_on 'Submit'
 

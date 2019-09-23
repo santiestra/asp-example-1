@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class PostFlowsTest < ActionDispatch::IntegrationTest
@@ -18,7 +20,7 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
 
     new_post_name = 'Test Post'
 
-    post "/posts", params: {
+    post '/posts', params: {
       post: { title: new_post_name, content: 'test content.', date: DateTime.current, category_id: Category.first.id }
     }
 
