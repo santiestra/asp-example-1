@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_114727) do
+ActiveRecord::Schema.define(version: 2019_09_22_234223) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "code"
@@ -24,10 +27,16 @@ ActiveRecord::Schema.define(version: 2019_08_29_114727) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "post_id"
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_comments_on_company_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -36,9 +45,11 @@ ActiveRecord::Schema.define(version: 2019_08_29_114727) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "category_id"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.bigint "company_id", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["company_id"], name: "index_posts_on_company_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -48,10 +59,21 @@ ActiveRecord::Schema.define(version: 2019_08_29_114727) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "company_id", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "companies"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "companies"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "companies"
 end

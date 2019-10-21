@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @posts = Post.all
   end
@@ -9,28 +13,25 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @categories = Category.all
+    load_categories
   end
 
   def create
-    # Por ahora como no tenemos login, hacemos que el user
-    # que crea los posts sea el primero
-    user = User.first
     @post = Post.new(post_params)
-    @post.user = user
+    @post.user = current_user
     @post.date = DateTime.current
 
     if @post.save
       redirect_to posts_path
     else
-      @categories = Category.all
+      load_categories
       render 'new'
     end
   end
 
   def edit
     @post = Post.find(post_id)
-    @categories = Category.all
+    load_categories
   end
 
   def update
@@ -51,5 +52,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :category_id)
+  end
+
+  def load_categories
+    @categories ||= Rails.cache.fetch('posts-categories', expires_in: 12.hours) do
+      Category.all
+    end
   end
 end
