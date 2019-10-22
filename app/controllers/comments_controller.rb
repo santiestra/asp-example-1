@@ -8,11 +8,12 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.date = DateTime.now
 
-    @comment.save!
-
-    CommentNotificationMailer.with(comment: @comment).send_notification.deliver_later
-
-    redirect_to post_path(@comment.post)
+    if @comment.save
+      CommentNotificationMailer.with(comment: @comment).send_notification.deliver_later
+      redirect_to post_path(@comment.post)
+    else
+      redirect_to post_path(@comment.post)
+    end
   end
 
   private
