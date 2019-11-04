@@ -4,27 +4,27 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all
+    @posts = PostsService.index(current_user)
   end
 
   def show
-    @post = Post.includes(comments: :user).find(post_id)
+    @post = PostsService.show(current_user, post_id)
   end
 
   def new
     @post = Post.new
-    load_categories
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
-    @post.date = DateTime.current
+    @post = PostsService.create(
+      current_user,
+      post_params[:title],
+      post_params[:content]
+    )
 
-    if @post.save
+    if @post.present?
       redirect_to posts_path
     else
-      load_categories
       render 'new'
     end
   end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id)
+    params.permit(:title, :content, :category_id)
   end
 
   def load_categories

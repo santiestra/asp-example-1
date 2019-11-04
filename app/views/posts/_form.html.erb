@@ -1,27 +1,21 @@
-<% if @post.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    Hubo errores al crear el post
-  </div>
-<% end %>
+<%# <% if @post.errors.any? %> %>
+  <%# <div class="alert alert-danger" role="alert"> %>
+    <%# Hubo errores al crear el post %>
+  <%# </div> %>
+<%# <% end %> %>
 
-<%= form_with(model: post, local: true) do |form| %>
-  <%= form.label :title %>
+<%= form_tag '/posts', method: 'post' do %>
+  <%= label_tag :title %>
   <br/>
-  <%= form.text_field :title, autofocus: true %>
-  <%= post.errors[:title].join(', ') %>
-  <br/>
-  <br/>
-  <%= form.label :content %>
-  <br/>
-  <%= form.text_area :content %>
-  <%= post.errors[:content].join(', ') %>
+  <%= text_field_tag :title, autofocus: true %>
   <br/>
   <br/>
-  <%= form.label :category %>
+  <%= label_tag :content %>
   <br/>
-  <%= form.select(:category_id, @categories.map { |category| [category.description, category.id] }) %>
+  <%= text_area_tag :content %>
   <br/>
-  <%= post.errors[:category_id].join(', ') %>
   <br/>
-  <%= form.submit 'Submit', class: 'submit' %>
+  <%# <%= post.errors[:category_id].join(', ') %> %>
+  <br/>
+  <%= submit_tag 'Submit', class: 'submit' %>
 <% end %>

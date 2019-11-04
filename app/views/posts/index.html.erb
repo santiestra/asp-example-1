@@ -2,7 +2,7 @@
   <h1>Posts</h1>
   <% @posts.each do |post| %>
     <hr />
-    <h2><%= link_to post.title, post %></h2>
+    <h2><%= link_to post['title'], post_path(post['id']) %>
     <hr />
   <% end %>
   <br>

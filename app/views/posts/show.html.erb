@@ -1,27 +1,27 @@
 <div>
   <%= link_to 'Inicio', posts_path %>
-  <h1><%= @post.title %></h1>
-  <%= link_to 'Editar post', edit_post_path(@post) %>
+  <h1><%= @post['title'] %></h1>
+  <%# <%= link_to 'Editar post', edit_post_path(@post) %> %>
   <hr />
 
   <p>
-    <%= @post.content %>
+    <%= @post['content'] %>
   </p>
 
   <hr />
-  <h3>Comentarios:</h3>
+  <%# <h3>Comentarios:</h3> %>
 
-  <% if @post.comments.empty? %>
-    <h4>No hay comentarios</h4>
-  <% end %>
+  <%# <% if @post.comments.empty? %> %>
+    <%# <h4>No hay comentarios</h4> %>
+  <%# <% end %> %>
 
-  <% @post.comments.each do |comment| %>
-    <strong><%= comment.user.name %>:</strong><br>
-    <%= comment.text %>
-    <hr />
-  <% end %>
+  <%# <% @post.comments.each do |comment| %> %>
+    <%# <strong><%= comment.user.name %>:</strong><br> %>
+    <%# <%= comment.text %> %>
+    <%# <hr /> %>
+  <%# <% end %> %>
 
-  <hr />
-  <h4>Agregar comentario</h4>
-  <%= render 'comments/form', post: @post, comment: Comment.new %>
+  <%# <hr /> %>
+  <%# <h4>Agregar comentario</h4> %>
+  <%# <%= render 'comments/form', post: @post, comment: Comment.new %> %>
 </div>

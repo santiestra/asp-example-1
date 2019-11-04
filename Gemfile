@@ -13,6 +13,8 @@ gem 'dotenv-rails', groups: %i[development test]
 gem 'pg', '1.1.4'
 # gem 'mysql2', '0.5.2'
 
+gem 'jwt'
+
 # Gems for caching
 gem 'hiredis', '0.6.3'
 gem 'redis', '~> 4.0'
@@ -40,6 +42,8 @@ gem 'jquery-rails', '~> 4.3.5'
 
 # For auth
 gem 'devise', '~> 4.7.1'
+
+gem 'newrelic_rpm'
 
 # For code standard
 gem 'rubocop', require: false
