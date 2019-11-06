@@ -35,7 +35,13 @@ class PostsService
     }
 
     res = HTTParty.post(uri, body: body, headers: headers)
-    JSON.parse(res.body)['post']
+    parsed_response = JSON.parse(res.body)
+    errors = parsed_response['error']
+    post = parsed_response ['post']
+
+    return { errors: errors } if errors.present?
+
+    post
   end
 
   private

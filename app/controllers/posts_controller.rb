@@ -22,7 +22,8 @@ class PostsController < ApplicationController
       post_params[:content]
     )
 
-    if @post.present?
+    p @post
+    unless @post.blank? || @post[:errors].present?
       redirect_to posts_path
     else
       render 'new'
